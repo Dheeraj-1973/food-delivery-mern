@@ -11,7 +11,9 @@ const App = () => {
 
     const fetchFoodList = async () => {
         try {
-            const response = await axios.get("http://localhost:4000/api/food/list");
+            // --- THIS IS THE CORRECTED LINE ---
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/food/list`);
+            
             if (response.data.success) {
                 setFoods(response.data.data);
                 console.log("Food data fetched successfully!");
