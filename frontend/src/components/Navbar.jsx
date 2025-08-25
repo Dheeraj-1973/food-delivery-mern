@@ -1,33 +1,17 @@
+// src/components/Navbar.jsx
 import React from 'react';
 import './Navbar.css';
 
-function Navbar({ cartItemCount, currentUser }) {
-
-  const logoutHandler = () => {
-    localStorage.removeItem('currentUser');
-    window.location.href = '/login';
-  };
-
+const Navbar = () => {
   return (
-    <nav className="navbar">
-      <div className="navbar-brand">
-        <a href="/">Foodie Hub</a>
+    <div className='navbar'>
+      <h1 className='logo'>Foodie Hub</h1>
+      <div className='navbar-right'>
+        <a href='#'>Login</a>
+        <a href='#' className='cart-link'>Cart (0)</a>
       </div>
-      <div className="navbar-links">
-        {currentUser ? (
-          // If user is logged in, show their name and a logout button
-          <div className="navbar-user">
-            <span>{currentUser.name}</span>
-            <button className="logout-btn" onClick={logoutHandler}>Logout</button>
-          </div>
-        ) : (
-          // If no user is logged in, show the Login link
-          <a href="/login">Login</a>
-        )}
-        <a href="/cart">Cart ({cartItemCount})</a>
-      </div>
-    </nav>
+    </div>
   );
-}
+};
 
 export default Navbar;

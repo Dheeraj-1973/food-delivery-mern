@@ -1,13 +1,11 @@
-const express = require('express');
-const router = express.Router();
+// C:\Users\dheer\food-delivery-app\backend\routes\foodRoute.js
 
-// Import the controller functions
-const { getAllFoods, addFood } = require('../controllers/foodController');
+import express from "express";
+import { listFood } from "../controllers/foodController.js";
 
-// Route to get all food items
-router.get('/getallfoods', getAllFoods);
+const foodRouter = express.Router();
 
-// Route to add a new food item
-router.post('/addfood', addFood);
+// This creates the endpoint: /api/food/list
+foodRouter.get("/list", listFood);
 
-module.exports = router;
+export default foodRouter;

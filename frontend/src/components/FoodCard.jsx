@@ -1,21 +1,19 @@
+// C:\Users\dheer\food-delivery-app\frontend\src\components\FoodCard.jsx
 import React from 'react';
+import './FoodCard.css'; // Let's assume you create a simple CSS file for this
 
-function FoodCard({ food, addToCart }) {
+const FoodCard = ({ food }) => {
   return (
-    <div className="food-card">
-      <img src={food.image} alt={food.name} className="food-image" />
-      <div className="food-details">
-        <h2>{food.name}</h2>
-        <p>{food.description}</p>
-        <div className="food-actions">
-          <h3>Price: ₹{food.price}</h3>
-          <button className="add-to-cart-btn" onClick={() => addToCart(food)}>
-            Add to Cart
-          </button>
-        </div>
+    <div className='food-card'>
+      <img src={`http://localhost:4000/images/${food.image}`} alt={food.name} className='food-card-image' />
+      <div className='food-card-content'>
+        <h3>{food.name}</h3>
+        <p className='food-card-desc'>{food.description}</p>
+        <p className='food-card-price'>₹{food.price}</p>
+        <button className='add-to-cart-btn'>Add to Cart</button>
       </div>
     </div>
   );
-}
+};
 
 export default FoodCard;

@@ -1,0 +1,44 @@
+/* C:\Users\dheer\food-delivery-app\frontend\src\screens\HomeScreen.css */
+
+.home-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.category-container {
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.category-btn {
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    background-color: #fff;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+    background-color: #f0f0f0;
+    border-color: #e74c3c;
+}
+
+.category-btn.active {
+    background-color: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}

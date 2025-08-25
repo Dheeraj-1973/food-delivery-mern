@@ -1,0 +1,50 @@
+/* src/App.css */
+.menu-container h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.category-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0 30px;
+}
+
+.category-container button {
+  padding: 10px 25px;
+  border-radius: 50px;
+  border: 2px solid #ddd;
+  background-color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.category-container button:hover {
+  background-color: #fff0ee;
+  border-color: #e74c3c;
+}
+
+.category-container button.active {
+  background-color: #e74c3c;
+  color: white;
+  border-color: #e74c3c;
+}
+
+.food-display-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin-top: 30px;
+  gap: 30px;
+  row-gap: 50px;
+}
+
+hr {
+  margin: 10px 0px;
+  height: 2px;
+  background-color: #e2e2e2;
+  border: none;
+}

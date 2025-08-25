@@ -1,35 +1,16 @@
-const mongoose = require('mongoose');
+// C:\Users\dheer\food-delivery-app\backend\models\foodModel.js
 
-// A Mongoose Schema defines the structure of the document,
-// default values, validators, etc.
+import mongoose from "mongoose";
+
 const foodSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-    price: {
-        type: Number,
-        required: true
-    },
-    image: {
-        type: String,
-        required: true
-    },
-    category: {
-        type: String,
-        required: true
-    }
-}, {
-    // timestamps will automatically add 'createdAt' and 'updatedAt' fields
-    timestamps: true
-});
+    name: { type: String, required: true },
+    description: { type: String, required: true },
+    price: { type: Number, required: true },
+    image: { type: String, required: true },
+    // --- ADD THIS LINE ---
+    category: { type: String, required: true }
+}, { timestamps: true });
 
-// A Mongoose Model provides an interface to the database for creating,
-// querying, updating, deleting records, etc.
-const Food = mongoose.model('Food', foodSchema);
+const foodModel = mongoose.models.food || mongoose.model("food", foodSchema);
 
-module.exports = Food;
+export default foodModel;

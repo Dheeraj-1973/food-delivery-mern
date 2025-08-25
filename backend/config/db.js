@@ -1,14 +1,12 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log('MongoDB Connected...');
-  } catch (err) {
-    console.error(err.message);
-    // Exit process with failure
-    process.exit(1);
-  }
+export const connectDB = async () => {
+    try {
+        await mongoose.connect('mongodb+srv://foodapp_user:GLfxHQKKuf3yDKJa@cluster0.chqsjei.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+        console.log("Database connected");
+    } catch (error) {
+        console.error("Database connection error:", error);
+        // Exit the process with a failure code
+        process.exit(1); 
+    }
 };
-
-module.exports = connectDB;

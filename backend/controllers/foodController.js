@@ -1,29 +1,18 @@
-const Food = require('../models/foodModel');
+// C:\Users\dheer\food-delivery-app\backend\controllers\foodController.js
 
-// This function gets all food items
-const getAllFoods = async (req, res) => {
-  try {
-    const foods = await Food.find({});
-    res.status(200).json(foods);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-};
+import foodModel from "../models/foodModel.js";
 
-// This function adds a new food item
-const addFood = async (req, res) => {
-  try {
-    // create a new document using the Food model
-    const newFood = new Food(req.body);
-    // save the document to the database
-    await newFood.save();
-    res.status(201).json({ message: 'Food Added Successfully' });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-};
+// List all food items
+const listFood = async (req, res) => {
+    try {
+        const foods = await foodModel.find({});
+        res.json({ success: true, data: foods });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error fetching food items" });
+    }
+}
 
-module.exports = {
-  getAllFoods,
-  addFood,
-};
+
+// --- MAKE SURE THIS EXPORT LINE IS EXACTLY LIKE THIS ---
+export { listFood };

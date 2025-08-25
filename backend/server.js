@@ -1,39 +1,30 @@
-console.log("--- SERVER.JS IS LOADING ---");
-const express = require('express');
-const cors = require('cors'); // <-- ADDED THIS
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
+// C:\Users\dheer\food-delivery-app\backend\server.js
+// (This is an example, add the foodRouter to your existing file)
 
-// Load env vars
-dotenv.config();
+import express from "express";
+import cors from "cors";
+import { connectDB } from "./config/db.js";
+import foodRouter from "./routes/foodRoute.js"; // <-- IMPORT IT
 
-// Connect to Database
+// App config
+const app = express();
+const port = 4000;
+
+// Middleware
+app.use(express.json());
+app.use(cors());
+
+// DB Connection
 connectDB();
 
-const app = express();
+// API Endpoints
+app.use("/api/food", foodRouter); // <-- USE IT
 
-// Middleware to parse JSON bodies
-app.use(express.json());
-
-// CORS Middleware to allow cross-origin requests
-app.use(cors()); // <-- ADDED THIS
-
-// Dynamic Port for Deployment
-const PORT = process.env.PORT || 5000; // <-- MODIFIED THIS
-
-// Import the food route
-const foodRoute = require('./routes/foodRoute');
-app.use('/api/food', foodRoute);
-
-// Import the user route
-const userRoute = require('./routes/userRoute');
-app.use('/api/users', userRoute);
-
-
-app.get('/', (req, res) => {
-  res.send('API is running...');
+// Default route
+app.get("/", (req, res) => {
+    res.send("API Working");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+    console.log(`Server started on http://localhost:${port}`);
 });
